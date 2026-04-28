@@ -25,44 +25,14 @@ public class TwoSum
     {
         var hash = new Dictionary<int, int>();
 
-        for(var i = 0; i < nums.Length; i++)
-        {
-            hash[nums[i]] = i;
-        }
-
         for (var i = 0; i < nums.Length; i++)
         {
-            var t = target - nums[i];
+            var c = target - nums[i];
 
-            if(hash.TryGetValue(t, out var j))
-            {
-                if (i != j)
-                    return [i, j];
-            }
-        }
+            if (hash.ContainsKey(c))
+                return [hash[c], i];
 
-        return [];
-    }
-
-    //O(n logN) space O(n)
-    public int[] TwoSumTP(int[] nums, int target)
-    {
-        //O(n logN) space O(n)
-        Array.Sort(nums);
-
-        var left = 0;
-        var right = nums.Length - 1;
-
-        while (left < right)
-        {
-            var cur_sum = nums[left] + nums[right];
-
-            if (cur_sum == target)
-                return [left, right];
-
-            if(target > cur_sum)
-                left++;
-            else right--;
+            hash[nums[i]] = i;
         }
 
         return [];
@@ -73,7 +43,7 @@ public class TwoSum
     {
         for (var i = 0; i < nums.Length; i++)
             for (var j = i + 1; j < nums.Length; j++)
-                if (nums[i] + nums[j] == target)
+                if (nums[i] + nums[j] == target && i != j)
                     return [i, j];
         return [];
     }
