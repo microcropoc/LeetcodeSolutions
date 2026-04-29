@@ -20,7 +20,7 @@ public class TwoSum
         Assert.Equal([0, 1], result);
     }
 
-    //O(n+m) space O(n)
+    //O(N) space O(N)
     public int[] TwoSumHash(int[] nums, int target)
     {
         var hash = new Dictionary<int, int>();
@@ -38,7 +38,7 @@ public class TwoSum
         return [];
     }
 
-    //n^2
+    //O(N) space O(1)
     public int[] TwoSumN2(int[] nums, int target)
     {
         for (var i = 0; i < nums.Length; i++)

@@ -19,29 +19,35 @@ public class ValidPalindrome
         Assert.Equal(false, IsPalindrome(s3));
     }
 
+    //O(n) space O(n)
+    public bool IsPalindromeLowQuality(string s)
+    {
+        var s1 = s.Where(char.IsLetterOrDigit).Select(char.ToLower);
+
+        return s1.SequenceEqual(s1.Where(char.IsLetterOrDigit).Reverse());
+    }
+
+    //O(n) space O(1)
     public bool IsPalindrome(string s)
     {
-        if (s.Length == 1)
-            return true;
-
         var left = 0;
         var right = s.Length - 1;
 
         while (left < right)
         {
-            if (!char.IsLetter(s[left]) && !char.IsDigit(s[left]))
+            if (!char.IsLetterOrDigit(s[left]))
             {
                 left++;
                 continue;
             }
 
-            if (!char.IsLetter(s[right]) && !char.IsDigit(s[right]))
+            if (!char.IsLetterOrDigit(s[right]))
             {
                 right--;
                 continue;
             }
 
-            if(char.ToLower(s[left]) != char.ToLower(s[right]))
+            if (char.ToLower(s[left]) != char.ToLower(s[right]))
                 return false;
 
             left++;

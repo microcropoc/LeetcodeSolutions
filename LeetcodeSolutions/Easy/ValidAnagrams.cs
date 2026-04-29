@@ -21,23 +21,22 @@ public class ValidAnagrams
     }
 
 
-    //O(n) space O(n)
+    //O(n log n) space O(n)
     public bool ValidAnagramsSort(string s, string t)
     {
-        if(s.Length != t.Length) 
+        if (s.Length != t.Length)
             return false;
 
-        return new string(s.OrderBy(i => i).ToArray()) == new string(t.OrderBy(i => i).ToArray());
+        return string.Concat(s.Order()) == string.Concat(t.Order());
     }
 
-    //O(n) space O(n)
+    //O(n) space O(k)
     public bool ValidAnagramsHash(string s, string t)
     {
         if (s.Length != t.Length) return false;
 
         Dictionary<char, int> dict = new Dictionary<char, int>();
 
-        // Подсчитываем символы из первой строки
         foreach (char c in s)
         {
             if (dict.ContainsKey(c))
@@ -46,7 +45,6 @@ public class ValidAnagrams
                 dict[c] = 1;
         }
 
-        // Вычитаем символы из второй строки
         foreach (char c in t)
         {
             if (!dict.ContainsKey(c))
@@ -60,6 +58,7 @@ public class ValidAnagrams
         return dict.Count == 0;
     }
 
+    //O(n) space O(1)
     public bool ValidAnagramsArray(string s, string t)
     {
         if (s.Length != t.Length) return false;
@@ -75,6 +74,30 @@ public class ValidAnagrams
         foreach (int val in count)
         {
             if (val != 0) return false;
+        }
+
+        return true;
+    }
+
+    //O(n) space O(1)
+    public bool ValidAnagramsArray2(string s, string t)
+    {
+        if (s.Length != t.Length)
+            return false;
+
+        var m = new int[26];
+
+        foreach (var i in s)
+        {
+            m[i - 'a']++;
+        }
+
+        foreach (var i in t)
+        {
+            m[i - 'a']--;
+
+            if (m[i - 'a'] < 0)
+                return false;
         }
 
         return true;
