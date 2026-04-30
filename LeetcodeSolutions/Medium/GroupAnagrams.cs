@@ -13,6 +13,8 @@ public class GroupAnagrams
         Assert.Equal(r, result);
     }
 
+
+    //O(n × L) O(n × L)
     public IList<IList<string>> GroupAnagramsMas(string[] strs)
     {
         var result = new Dictionary<string, IList<string>>();
@@ -38,6 +40,6 @@ public class GroupAnagrams
             }
         }
 
-        return result.Values.Select(i => (IList<string>)i.OrderBy(j => j).ToArray()).OrderBy(i => i.Count).ToList();
+        return result.Values.ToList();
     }
 }

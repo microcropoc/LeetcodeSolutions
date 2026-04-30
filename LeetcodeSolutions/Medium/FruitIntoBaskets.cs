@@ -5,7 +5,7 @@ public class FruitIntoBaskets
     [Fact]
     public void Test1()
     {
-        var result = TotalFruit([[0, 1, 2, 2]);
+        var result = TotalFruit([0, 1, 2, 2]);
 
         Assert.Equal(3, result);
     }

@@ -1,4 +1,4 @@
-﻿namespace LeetCodeTests.Common;
+﻿namespace LeetCodeTests.Medium;
 
 public class MinimumSizeSubarraySum
 {
