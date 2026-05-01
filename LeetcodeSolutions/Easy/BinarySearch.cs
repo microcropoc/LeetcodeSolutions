@@ -13,6 +13,7 @@ public class BinarySearch
         Assert.Equal(4, result);
     }
 
+    //O(log n) O(1)
     public int Search(int[] nums, int target)
     {
         var left = 0;
@@ -38,6 +39,7 @@ public class BinarySearch
         return -1;
     }
 
+    //O(log n) O(log n)
     public int SearchR(int[] nums, int target)
     {
         int R(int[] nums, int target, int left, int right)

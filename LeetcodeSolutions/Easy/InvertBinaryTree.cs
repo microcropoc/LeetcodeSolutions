@@ -15,10 +15,7 @@ public class InvertBinaryTree
         if (root is null)
             return root!;
 
-        var l = root.left;
-
-        root.left = root.right;
-        root.right = l;
+        (root.left, root.right) = (root.right, root.left);
 
         InvertTree(root.left);
         InvertTree(root.right);
